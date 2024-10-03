@@ -1,0 +1,46 @@
+{% extends "./plantillaMobiliario.html" %}
+{% block title %} Gestion de Actualizacion de Usuarios {% endblock %}
+
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h1>Edicion de Usuario</h1>
+        <form action="/administrador/mobiliario/editarMobiliario/{{mobi.id_mobi}}" method="post">
+            <div class="form-group">
+                {% csrf_token %}
+                <span>
+                    <h4  class="form-control" maxlength="50">{{mobi.id_mobi}}</h4> 
+                </span><br>
+                <span>
+                    <input type="text" value=" {{mobi.camas_sencillas}}" placeholder = " cantida de camassencillas" name = "camassencillas" required class="form-control" maxlength="2">
+                </span><br>
+                <span>
+                    <input type="text" value=" {{mobi.camas_doble}}" placeholder = "cantida de camas doble" name = "camasdoble" required class="form-control" maxlength="2">
+                </span><br>
+                <span>
+                    <input type="text" value=" {{mobi.camas_king}}" placeholder = "cantida de camas king" name = "camasking" required class="form-control" maxlength="2">
+                </span><br>
+                <span>
+                    <input type="text" value=" {{mobi.tv_plano}}" placeholder = "cantida de tv plano" name = "tvplano" required class="form-control" maxlength="2">
+                </span><br>
+                <span>
+                    <input type="text" value=" {{mobi.sala}}" placeholder = "cantida de sala" name = "sala" required class="form-control" maxlength="2">
+                </span><br>
+                <span>
+                    <input type="text" value=" {{mobi.sillas}}" placeholder = "cantida de sillas  " name = "sillas" required class="form-control" maxlength="2">
+                </span><br>    
+                
+                    <button type="submit" class="btn btn-success btn-block">Ingresar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+    h5{
+        color: brown;
+    }
+</style>
+
+{% endblock %}

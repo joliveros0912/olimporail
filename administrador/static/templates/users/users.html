@@ -1,0 +1,115 @@
+{% extends "./plantilla.html" %}
+{% block title %} Gestion de Usuarios {% endblock %}
+
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h1>Lista de usuarios</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="registrarusuario/" method="post">
+                    <div class="form-group">
+                        {% csrf_token %}
+                        <span>
+                            <input type="text" placeholder = "cedula" name = "cedula" required class="form-control" maxlength="50">
+                        </span><br>
+                        <span>
+                            <input type="text" placeholder = "nombre" name = "nombre" required class="form-control" maxlength="50"> 
+                        </span><br>
+                        <span>
+                            <input type="text" placeholder = "apellido" name = "apellido" required class="form-control" maxlength="100">
+                        </span><br>
+                        <span>
+                            <input type="text" placeholder = "direcion" name="direcion" required class="form-control" minlength="8" maxlength="50">
+                        </span><br>
+                        <span>
+                            <input type="number" placeholder = "contacto_ememergencia" name="contacto_ememergencia" required class="form-control" minlength="8" maxlength="50">
+                        </span><br>
+                        <span>
+                            <input type="text" placeholder = "acudiente" name = "acudiente" required class="form-control" minlength="10" maxlength="10">
+                        </span><br>
+                        <span>
+                            <input type="number" placeholder = "telefono" name = "telefono" required class="form-control" maxlength="50">
+                        </span><br>
+                        <span>
+                            <input type="email" placeholder = "correo" name = "correo" required class="form-control" maxlength="50"> 
+                        </span><br>
+                        <span>
+                            <input type="text" placeholder = "eps" name = "eps" required class="form-control" maxlength="100">
+                        </span><br>
+                        <span>
+                            <input type="text" placeholder = "caja de compensacion" name="caja_de_compensacion" required class="form-control" minlength="8" maxlength="50">
+                        </span><br>
+                        <span>                            
+                            <select name="tipo" required class="form-control" minlength="8" maxlength="50">
+                                {% for tipo in tipo %}
+                                <option value="{{tipo.tipo_empleado}}">{{tipo.tipo_empleado}}</option>
+                                {% endfor %}
+                              </select>
+                        </span><br>
+                        <span>                            
+                            <select name="estado" required class="form-control" minlength="8" maxlength="50">
+                                {% for estado1 in estado1 %}
+                                <option value="{{estado1.esatado_empleado }}">{{estado1.esatado_empleado }}</option>
+                                {% endfor %}
+                              </select>
+                        </span><br>
+                        <span>
+                            <input type="password" placeholder = "contraseña" name = "contraseña" required class="form-control" minlength="10" maxlength="10">
+                        </span><br>
+                            <button type="submit" class="btn btn-success btn-block">Ingresar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>cedula</th>
+                        <th>nombre</th>
+                        <th>apellido</th>
+                        <th>direcion</th>
+                        <th>contacto ememergencia</th>	
+                        <th>acudiente</th>
+                        <th>telefono</th>	
+                        <th>correo</th>	
+                        <th>eps</th>		
+                        <th>caja de compensacion</th>	
+                        <th>tipo de empleado </th>	
+                        <th>estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in usuarios %}
+                    <tr>
+                        <td>{{i.cc_usu}}</td>
+                        <td>{{i.nombre}}</td>
+                        <td>{{i.apellido}}</td>
+                        <td>{{i.direcion}}</td>
+                        <td>{{i.contacto_ememergenci}}</td>
+                        <td>{{i.nombre_contacto}}</td>
+                        <td>{{i.telefono}}</td>
+                        <td>{{i.correo}}</td>
+                        <td>{{i.eps}}</td>
+                        <td>{{i.caja_de_compensacion}}</td>
+                        <td>{{i.codigo_usu_id}}</td>
+                        <td>{{i.estado_id}}</td>
+                        <td><a href ="edicionUser/{{i.documento}}" class="btn btn-info text-white">Actualizar</a></td>
+                        <td><a href ="eliminacionUser/{{i.documento}}" class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+        
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

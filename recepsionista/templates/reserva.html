@@ -1,0 +1,138 @@
+{% extends "./plantillareserva.html" %}
+{% block title %} Gestion de habitacion {% endblock %}
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h1>Lista de habitacion</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="registarReservaResep/" method="post">
+                    <div class="form-group">
+                        {% csrf_token %}
+                        <span>
+                            <input type="text" placeholder = "numero de documneto del cliente" name = "numero_doc_cli" required class="form-control" maxlength="50">
+                        </span><br>
+                        <span>
+                            Fecha de inicio:
+                            <input type="date" placeholder="cantidad personas" name="fecha_in" required class="form-control" id="fecha_in">
+                        </span><br>
+                        <span>
+                            Fecha de fin:
+                            <input type="date" placeholder="cantidad personas" name="fecha_fi" required class="form-control" id="fecha_fi">
+                        </span><br>
+                        
+        <script>
+            // Obtiene la fecha actual en formato YYYY-MM-DD
+            var fechaActual = new Date().toISOString().split('T')[0];
+            // Establece la fecha actual como el valor mínimo para el campo de fecha de inicio
+            document.getElementById("fecha_in").setAttribute("min", fechaActual);
+            document.getElementById("fecha_fi").setAttribute("min", fechaActual);
+        
+            // Agrega un event listener al campo de fecha de fin
+            document.getElementById("fecha_fi").addEventListener("change", function() {
+                // Obtiene el valor de la fecha de inicio y la fecha de fin
+                var fechaInicio = new Date(document.getElementById("fecha_in").value);
+                var fechaFin = new Date(this.value); // "this" se refiere al campo de fecha de fin
+        
+                // Compara las fechas
+                if (fechaFin <= fechaInicio) {
+                    // Si la fecha de fin es igual o anterior a la fecha de inicio,
+                    // ajusta la fecha de fin para que sea al menos un día después de la fecha de inicio
+                    var nuevaFechaFin = new Date(fechaInicio);
+                    nuevaFechaFin.setDate(nuevaFechaFin.getDate() + 1); // Suma un día
+                    // Formatea la nueva fecha y actualiza el valor del campo de fecha de fin
+                    var nuevaFechaFinISO = nuevaFechaFin.toISOString().split('T')[0];
+                    document.getElementById("fecha_fi").value = nuevaFechaFinISO;
+                }
+            });
+        </script>
+
+                        <span>                            
+                            <select name="tipo" required class="form-control" minlength="8" maxlength="50">
+                                {% for h in habit %}
+                                {% if h.estado_id == 'Disponible' %}
+                                <option value="{{h.numero_H }}"> habitacion :{{h.numero_H }} valor: {{h.valor_habitacion}} tipo: {{h.tipo_id}}</option>                                
+                                {% endif %}
+                                {% endfor %}
+
+                              </select>
+                        </span><br>
+                        
+                            <button type="submit" class="btn btn-success btn-block">Ingresar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+       
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>id_reserva</th>
+                        <th>fecah_ini</th>
+                        <th>fecah_fin</th>
+                        <th>valor_reserva</th>
+                        <th>estado_res_id </th>	
+                        <th>habitacion_id</th>
+                        <th>numero_doc_id</th>
+
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for i in res %}
+                    {% if i.estado_res_id == 'Activo' %}
+
+                    
+                        <tr>
+                            <tr id="fila{{ i.id_reserva }}"></tr>
+                            <td>{{ i.id_reserva }}</td>
+                            <td>{{ i.fecah_ini }}</td>
+                            <td>{{ i.fecah_fin }}</td>
+                            <td>{{ i.valor_reserva }}</td>
+                            <td>{{ i.estado_res_id }}</td>
+                            <td>{{ i.habitacion_id }}</td>
+                            <td>{{ i.numero_doc_id }}</td>
+
+                            <td><a href="factura/{{ i.id_reserva }}/{{i.habitacion_id}}/" class="btn btn-info text-white" onclick="redirigirURL()" >generar factura</a></td>
+                            <td><a href="eliminarRES/{{ i.id_reserva }}" class="btn btn-danger">Eliminar</a></td>
+                        </tr>
+                    {% endif %}                    
+                    {% endfor %}
+                </tbody>
+        
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    function redirigirURL() {
+        // Redirige a la URL deseada
+        setTimeout(function() {
+            // Redirige a la URL deseada después de un segundo
+            window.location.href = '/recepcionista/recepcionista/';
+        }, 1000); // 1000 milisegundos = 1 segundo
+    }
+</script>
+
+<script>
+
+    function validarFechas() {
+        var fechaInicial = document.forms["formulario"]["fecha_in"].value;
+        var fechaFinal = document.forms["formulario"]["fecha_fi"].value;
+
+        if (fechaInicial > fechaFinal) {
+            alert("La fecha inicial no puede ser mayor que la fecha final.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+
+
+{% endblock %}

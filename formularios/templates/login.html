@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio Sesion</title>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</head>
+
+<body>
+    <div class="containerr forms">
+        <div class="form login">
+            <div class="form-content">
+                <header><strong>Login</strong></header>
+                <!-- <h5>Complete todos los campos</h5> -->
+                <form method="post" action="verifi/">
+                    {% csrf_token %}
+                    <div class="field">
+                        <label for="id_tipo_usuario">Ingrese tipo de usuario</label>
+                        {{ form.tipo_usuario }}
+                    </div>
+                    <div class="field">
+                        <label for="id_numero_doc">Ingrese documento</label>
+                        {{ form.numero_doc }}
+                    </div>
+                    <div class="field">
+                        <label for="id_contrasenaaC">Ingrese contraseña</label>
+                        {{ form.contrasenaaC }}
+                    </div>
+                    <div class="field button-field">
+                        <input type="submit" value="Ingresar" class="btn btn-success float-right">
+                    </div>
+                    <div class="form-link">
+                        <span>¿No tienes cuenta? <a href="/formularios/registro/">Regístrate aquí</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </form>
+    </div>
+    </div>
+
+
+    </div>
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: 0;
+        font-family: 'Poppins';
+    }
+
+    .containerr {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(182, 171, 121);
+    }
+
+    header {
+        font-size: 28px;
+        font-weight: 600px;
+
+        color: black;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .form {
+        max-width: 430px;
+        width: 100%;
+        padding: 30px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background-color: #fff;
+    }
+
+
+    .field select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="%23333" d="M14.641 7.359l-4 4-4-4a.5.5 0 1 0-.707.707l4.146 4.146a1 1 0 0 0 1.414 0l4.146-4.146a.5.5 0 0 0-.707-.707z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 8px center;
+    }
+
+    .field {
+        margin-bottom: 15px;
+    }
+
+    .field input[type="text"],
+    .field input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    .button-field input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: rgb(182, 171, 121);
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .button-field input[type="submit"]:hover {
+        background-color: rgb(185, 166, 82);
+    }
+
+    .form-link {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .form-link a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .form-link a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+</html>

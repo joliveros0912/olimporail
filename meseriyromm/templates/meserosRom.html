@@ -1,0 +1,36 @@
+{% extends "./plantilla.html" %}
+{% block title %} Gestion de Usuarios {% endblock %}
+{% block body %}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h1>agregar a reserva </h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="registarservi/" method="post">
+                    <div class="form-group">
+                        {% csrf_token %}
+                        <span>
+                            <input type="text" placeholder = "numero de reserva" name = "id_reserva" required class="form-control" maxlength="20">
+                        </span><br>
+                        <span>                            
+                            <select name="tipo" required class="form-control" >
+                                {% for tipo in tipo_ser %}
+                                <option value="{{tipo.tipo_servicio}}">{{tipo.tipo_servicio	}}</option>
+                                {% endfor %}
+                              </select>
+                        </span><br>
+                        <span>
+                            <input type="number" placeholder = "valor" name = "valor_C" required class="form-control" minlength="1" maxlength="30">
+                        </span><br>
+                        <span>
+                            <input type="text" placeholder = "descipcion" name="descipcion" required class="form-control"  maxlength="80">
+                        </span><br>
+                                               
+                            <button type="submit" class="btn btn-success btn-block">Ingresar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

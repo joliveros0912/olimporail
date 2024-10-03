@@ -1,0 +1,200 @@
+{% load static %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Olympo</title>
+        <link rel="stylesheet" href="{% static "css/index_style.css" %}">
+        <!-- boxicons link  -->
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <!-- lightgallery link  -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
+        <!-- OwlCarousel2 -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css"/>    
+        <!-- lightgallery  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css"/>
+    
+    </head>
+    <body>
+    
+        <header>
+    
+            <!-- navbar seccion inicio -->
+    
+            <nav id="navbar" class="navbar flex-row">
+                
+                <div class="logo">
+                    <h5>Olympo (logo)</h5>
+                </div>
+    
+                <ul id="nav-items" class="nav-items" >
+                    <li><a href="#home" class="nav-links">HOME</a></li>
+                    <li><a href="#reservation" class="nav-links">RESERVACIONES</a></li>
+                    <li><a href="#rooms" class="nav-links">HABITACIONES</a></li>
+                    <li><a href="#services" class="nav-links">SERVICIOS</a></li>
+                    <li><a href="#booking" class="nav-btn-book">Apartar</a></li>
+                </ul>
+    
+                <div class="nav-icon menu-btn-wrapper">
+                    <i id="menu-btn" class="menu-btn bx bx-menu"></i>
+                </div>
+    
+    
+            </nav>
+            <!-- navbar seccion fin -->
+    
+    
+            <!-- prenav seccion inicio -->
+    
+            
+            <div id="prenav-text">
+                <div class="flex-row">
+                    <div class="contact-info">telefono: <span>+57 5556666</span> correo:
+                        <span>atencionalcliente@olympo.com</span></div>
+                <div class="opening-times flex-row">
+                    Abierto todos los days / 24 horas. 
+                    <ul class="social-links flex-row">
+                        <li><a href="#"><i class="bx bxl-facebook"></i></a></li>
+                        <li><a href="#"><i class="bx bxl-instagram"></i></a></li>
+                        <li><a href="#"><i class="bx bxl-twitter"></i></a></li>
+                        <li><a href="#"><i class="bx bxl-whatsapp"></i></a></li>
+                        <li><a href="#"><i class="bx bxl-youtube"></i></a></li>
+                        <li><a href="login"><i class='bx bxs-user-pin'></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- prenav seccion final -->
+    
+            
+        </header>
+        <!-- seccion inicio home  -->
+    
+        <section id="home">
+            <div class="home_carousel owl-carousel owl-theme">
+                <div class="slide slide1">
+                    <div class="content">
+                        <p class="subheading">En el hotel</p>
+                        <h1 class="heading">Olympo</h1>
+                        <p class="subheading-2">Dormiras como los Dioses</p>
+                    </div>
+                </div>
+                <div class="slide slide2">
+                    <div class="content">
+                        <p class="subheading">Otro texto que añadir</p>
+                        <h1 class="heading">Watafak</h1>
+                        <p class="subheading-2">Desde 1847</p>
+                    </div>
+                </div>
+                <div class="slide slide3">
+                    <div class="content">
+                        <p class="subheading">Texto 3</p>
+                        <h1 class="heading">MEQUIEROMATAR</h1>
+                        <p class="subheading-2">Desde 1847</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- seccion inicio fin home  -->
+    
+    
+        <!-- seccion about us inicio -->
+    
+        <section id="about" class="flex-row">
+            <div class="booking-form">
+                <h2>Reservacion</h2>
+                <form action="#">
+                    <input type="text" name="name" placeholder="nombre">
+                    <input type="text" name="second" placeholder="apellido">
+                    <input type="number" name="number" placeholder="Telefono">
+                    <input type="email" name="email" placeholder="Correo">
+                    <input type="date" name="fechaini" placeholder="Fecha Inicio">
+                    <input type="date" name="fechafin" placeholder="Fecha final">
+                    <a href="#" type="submit" class="btn1">Mirar Viabilidad</a>
+                </form>
+            </div>
+        
+    
+            <div class="text-wrapper">
+                <h1>Kanye West</h1>
+                <h3>Mesero</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br> Dolor, quam odio enim obcaecati hic esse </p>
+            </div>
+    
+            <div class="img-wrapper">
+                <img src="{% static "images/ye.png" %}" alt="#">
+            </div>
+        </section>
+        <!-- seccion about us fin -->
+    
+        <!-- quotes start -->
+    
+        <section id="quote">
+            <div class="text-wrapper">
+                <h1>Siempre Disponibles</h1>
+                <h2>En olympo descubriras lo que es la grandeza</h2>
+                
+            </div>
+        </section>
+    
+        <!-- quotes end -->
+    
+        <!-- Servicios start -->
+    
+        <section id="menu" class="menu-section">
+            <div class="section-heading">
+                <h3>Servicios</h3>
+                <div class="square-wrapper flex-row">
+                    <div class="square"></div>
+                    <div class="square"></div>
+                    <div class="square"></div>
+                    <div class="square"></div>
+                    <div class="square"></div>
+                </div>
+            </div>
+    
+            <div class="menu-tabs flex-row">
+                <div class="menu-tab-item active">
+                    <i class="bx bxs-spa"></i>
+                        <span>Spa</span>
+                </div>
+                <div class="menu-tab-item">
+                    <i class="bx bx-drink"></i>
+                        <span>Bar</span>
+                </div>
+                <div class="menu-tab-item">
+                    <i class="bx bx-restaurant"></i>
+                        <span>Restaurante</span>
+                </div>
+                <div class="menu-tab-item">
+                    <i class="bx bx-swim"></i>
+                        <span>Piscina</span>
+                </div>
+            </div>
+    
+            <!-- servicio -->
+    
+            <div class="menu-item">
+                <div class="menu-item-inner">
+                    <div class="service-img">
+    
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Servicios End -->
+        <!-- light gallery  -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+        <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <!-- carrousel script  -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        <!-- local script  -->
+        <script src="{% static "js/index_ja.js" %}"></script>
+    </body>
+    </html>
+    

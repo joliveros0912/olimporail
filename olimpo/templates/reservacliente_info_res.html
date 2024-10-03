@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TU Reserva</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>MIRA TU RESERVA </h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/reservaClient/reservaC/reserva/generarinformedereserva/{{id_res}}/" method="post">
+                    <div class="form-group">
+                        {% csrf_token %}
+                        <h2>Su número de documento:</h2>
+                        <h5>{{documento}}</h5>
+                    </div>
+                    <div class="form-group">
+                        {% csrf_token %}
+                        <h2>Su Número de Reserva:</h2>
+                        <h5>{{id_res}}</h5>
+                    </div>
+                    <div class="form-group">
+                        <h2>Su nombre:</h2>
+                        <h5>{{NombreC}}</h5>
+                    </div>
+                    <div class="form-group">
+                        <h2>Su correo electrónico:</h2>
+                        <h5>{{correoC}}</h5>
+                    </div>
+                    <div class="form-group">
+                        <h2>Fecha de inicio:</h2>
+                        <h5>{{fecha_ini}}</h5>
+                    </div>
+                    <div class="form-group">
+                        <h2>Fecha de fin:</h2>
+                        <h5>{{fecha_fin}}</h5>
+                    </div>                    
+                    <div class="form-group">
+                        <h2>valor total :</h2>
+                        <h5>{{valor}}</h5>
+                    </div>
+                    <div class="form-group">
+                        <h2>tipo de habitacion :</h2>
+                        <h5>{{tipo}}</h5>
+                    </div>
+                    <button type="submit">generar factura</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<style>body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(182, 171, 121);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+select {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #ccc 50%), linear-gradient(135deg, #ccc 50%, transparent 50%);
+    background-position: calc(100% - 10px) calc(1em + 2px), calc(100% - 5px) calc(1em + 2px);
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    text-align: center; /* Centra el texto dentro del select */
+}
+
+
+button {
+    background-color: rgb(182, 171, 121);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #998e68;
+}
+
+
+</style>

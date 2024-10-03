@@ -1,0 +1,48 @@
+{% extends "./plantillaamadllaves.html" %}
+{% block title %} Gestion de habitacion {% endblock %}
+
+
+{% block body %}
+
+<div class="row">
+    <!-- <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h1>Lista de habitacion</h1>
+        <div class="card">
+            <div class="card-body">
+                
+            </div>
+        </div>
+    </div> -->
+    <h1>Lista de habitacion</h1>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>numero de habitacion</th>
+                        <th>estado</th>
+                        <th>acion</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for i in habitacion %}
+                    
+                        <tr>
+                            <td>{{ i.numero_H }}</td>
+                            <td>{{ i.estado_id }}</td>
+                            <td><a href="cambiaresatdo/{{ i.numero_H }}" class="btn btn-info text-white">Cambiar estado</a></td>
+                        </tr>
+                    
+                    {% endfor %}
+                </tbody>
+        
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

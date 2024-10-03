@@ -1,0 +1,80 @@
+{% extends "./plantillaMobiliario.html" %}
+{% block title %} Gestion de habitacion {% endblock %}
+
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h1>Lista de servicio</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="regisatarMobiliario/" method="post">
+                    <div class="form-group">
+                        {% csrf_token %}
+                        <span>
+                            <input type="text" placeholder = "codigo del moviliaro " name = "co_mibi" required class="form-control" maxlength="50">
+                        </span><br>
+                        <span>
+                            <input type="number" placeholder = " cantida de camas sencillas" name = "camassencillas" required class="form-control" maxlength="10">
+                        </span><br>
+                        <span>
+                            <input type="number" placeholder = "cantida de camas doble" name = "camasdoble" required class="form-control" maxlength="10">
+                        </span><br>
+                        <span>
+                            <input type="number" placeholder = "cantida de camas king" name = "camasking" required class="form-control" maxlength="10">
+                        </span><br>
+                        <span>
+                            <input type="number" placeholder = "cantida de tv plano" name = "tvplano" required class="form-control" maxlength="10">
+                        </span><br>
+                        <span>
+                            <input type="number" placeholder = "cantida de sala" name = "sala" required class="form-control" maxlength="10">
+                        </span><br>
+                        <span>
+                            <input type="number" placeholder = "cantida de sillas  " name = "sillas" required class="form-control" maxlength="10">
+                        </span><br>                                       
+                            <button type="submit" class="btn btn-success btn-block">Ingresar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>id_mobi</th>
+                        <th>camas_sencillas</th>
+                        <th>camas_doble</th>
+                        <th>camas_king</th>
+                        <th>tv_plano</th>
+                        <th>sala</th>
+                        <th>sillas</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for i in dato %}
+                        <tr>
+                            <td>{{ i.id_mobi }}</td>
+                            <td>{{ i.camas_sencillas }}</td>
+                            <td>{{ i.camas_doble }}</td>
+                            <td>{{ i.camas_king }}</td>
+                            <td>{{ i.tv_plano }}</td>
+                            <td>{{ i.sala }}</td>
+                            <td>{{ i.sillas }}</td>
+                            <td><a href="actializarMobiliario/{{ i.id_mobi }}" class="btn btn-info text-white">Actualizar</a></td>
+                            <td><a href="eliminarMobiliario/{{ i.id_mobi }}" class="btn btn-danger">Eliminar</a></td>
+                        </tr>
+                    
+                    
+                    {% endfor %}
+                </tbody>
+        
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

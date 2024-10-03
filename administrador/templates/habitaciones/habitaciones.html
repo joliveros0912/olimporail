@@ -1,0 +1,90 @@
+{% extends "./plantillaHa.html" %}
+{% block title %} Gestion de habitacion {% endblock %}
+
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h1>Lista de habitacion</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="registrarhabitacion/" method="post">
+                    <div class="form-group">
+                        {% csrf_token %}
+                        <span>
+                            <input type="text" placeholder = "numero_H" name = "numero_H" required class="form-control" maxlength="50">
+                        </span><br>
+                        <span>
+                            <input type="text" placeholder = "cantidad personas" name = "cantidad_p" required class="form-control" maxlength="50"> 
+                        </span><br>
+                        <span>
+                            <input type="number" placeholder = "valor" name = "valor" required class="form-control" maxlength="100">
+                        </span><br>
+                        <span>                            
+                            <select name="tipo" required class="form-control" minlength="8" maxlength="50">
+                                {% for tipo in tipo %}
+                                <option value="{{tipo.tipo_habitacion}}">{{tipo.tipo_habitacion	}}</option>
+                                {% endfor %}
+                              </select>
+                        </span><br>
+                        <span>                            
+                            <select name="estado" required class="form-control" minlength="8" maxlength="50">
+                                {% for estado1 in estado1 %}
+                                <option value="{{estado1.estado_reserva	 }}">{{estado1.estado_reserva	 }}</option>
+                                {% endfor %}
+                              </select>
+                        </span><br>
+                        <span>                            
+                            <select name="mibiliario" required class="form-control" minlength="8" maxlength="50">
+                                {% for moviliario in moviliario %}
+                                <option value="{{moviliario.id_mobi	 }}">{{moviliario.id_mobi}}</option>
+                                {% endfor %}
+                              </select>
+                        </span><br>
+                            <button type="submit" class="btn btn-success btn-block">Ingresar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        
+                        
+                        <th>numero de habitacion</th>
+                        <th>cantidad personas</th>
+                        <th>valor</th>
+                        <th>estado</th>
+                        <th>tipo de moviliario </th>	
+                        <th>tipo</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for i in habitacion %}
+                    
+                        <tr>
+                            <td>{{ i.numero_H }}</td>
+                            <td>{{ i.cantidad_p }}</td>
+                            <td>{{ i.valor_habitacion }}</td>
+                            <td>{{ i.estado_id }}</td>
+                            <td>{{ i.id_mobi_id }}</td>
+                            <td>{{ i.tipo_id }}</td>
+                            <td><a href="actializarhabitacion/{{ i.numero_H }}" class="btn btn-info text-white">Actualizar</a></td>
+                            <td><a href="eliminarHabitacion/{{ i.numero_H }}" class="btn btn-danger">Eliminar</a></td>
+                        </tr>
+                    
+                    {% endfor %}
+                </tbody>
+        
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

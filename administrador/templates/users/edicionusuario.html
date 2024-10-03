@@ -1,0 +1,74 @@
+{% extends "./plantilla.html" %}
+{% block title %} Gestion de Actualizacion de Usuarios {% endblock %}
+
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h1>Edicion de Usuario</h1>
+        <form action="/administrador/users/editarU/{{cedula.cc_usu}}" method="post">
+            <div class="form-group">
+                {% csrf_token %}
+                <span>
+                    <h4  class="form-control" maxlength="50">{{cedula.cc_usu}}</h4>
+                                    
+                </span><br>
+                <span>
+                    <input type="text" placeholder = "nombre" name = "nombre" value="{{cedula.nombre}}"  required class="form-control" maxlength="50"> 
+                </span><br>
+                <span>
+                    <input type="text" placeholder = "apellido" name = "apellido" value="{{cedula.apellido}}" required class="form-control" maxlength="100">
+                </span><br>
+                <span>
+                    <input type="text" placeholder = "direcion" name="direcion"value="{{cedula.direcion}}" required class="form-control" minlength="8" maxlength="50">
+                </span><br>
+                <span>
+                    <input type="text" placeholder = "contacto_ememergencia"value="{{cedula.contacto_ememergenci}}" name="contacto_ememergencia" required class="form-control" minlength="8" maxlength="50">
+                </span><br>
+                <span>
+                    <input type="text" placeholder = "acudiente" name = "acudiente"value="{{cedula.nombre_contacto}}" required class="form-control" minlength="10" maxlength="10">
+                </span><br>
+                <span>
+                    <input type="text" placeholder = "telefono" name = "telefono"value="{{cedula.telefono}}" required class="form-control" maxlength="50">
+                </span><br>
+                <span>
+                    <input type="email" placeholder = "correo" name = "correo"value="{{cedula.correo}}" required class="form-control" maxlength="50"> 
+                </span><br>
+                <span>
+                    <input type="text" placeholder = "eps" name = "eps"value="{{cedula.eps}}" required class="form-control" maxlength="100">
+                </span><br>
+                <span>
+                    <input type="text" placeholder = "caja de compensacion"value="{{cedula.caja_de_compensacion}}" name="caja_de_compensacion" required class="form-control" minlength="8" maxlength="50">
+                </span><br>
+                <span>    
+                    <h5>su tipo es ={{cedula.codigo_usu_id}} <br> si no va a cambiar el tipo por favor revisar que sea el correspondiente</h5>                        
+                    <select name="tipo2" required class="form-control" minlength="8" maxlength="50">
+                        {% for tipo in tipo1 %}
+                        <option value="{{tipo.tipo_empleado}}">{{tipo.tipo_empleado}}</option>
+                        {% endfor %}
+                      </select>
+                </span><br>
+                <span>       
+                    <h5 > su esatado es = {{cedula.estado_id}} <br> si no va a cambiar el estado por favor revisar que sea el correspondiente</h5>                   
+                    <select name="estado2" required class="form-control" minlength="8" maxlength="50">
+                        {% for estado in estado1 %}
+                        <option value="{{estado.esatado_empleado}}">{{estado.esatado_empleado }}</option>
+                        {% endfor %}
+                      </select>
+                </span><br>
+                <span>
+                    <input type="password" placeholder = "contraseña"  name = "contraseña" required class="form-control" minlength="9" maxlength="9">
+                </span><br>
+                    <button type="submit" class="btn btn-success btn-block">Ingresar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+    h5{
+        color: brown;
+    }
+</style>
+
+{% endblock %}
