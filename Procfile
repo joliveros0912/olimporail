@@ -1,1 +1,1 @@
-web : gunicorn ApisOlimpo.wsgi --log-file -
+web : python manage.py collectstatic --noinput &&  gunicorn ApisOlimpo.wsgi --log-file -
