@@ -23,7 +23,6 @@ from olimpo import views
 urlpatterns = [
     path('',views.home),
     path('formularios/', include("formularios.urls")),
-    path('recepcionista/',include('recepsionista.urls')),
     path('administrador/',views.admin),
     path('administrador/',include('administrador.urls')),
     path('amadellaves/',include('amallaves.urls')),

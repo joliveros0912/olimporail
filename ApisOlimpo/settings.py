@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     "apia",
     "olimpo",
     "administrador",
-    "recepsionista",
     "amallaves",
     "meseriyromm",
     "formularios",
