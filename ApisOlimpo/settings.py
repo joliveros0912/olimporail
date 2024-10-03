@@ -80,6 +80,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+
+ALLOWED_HOSTS = ['localhost', 'olimporail-production.up.railway.app']
+
 ROOT_URLCONF = 'ApisOlimpo.urls'
 
 TEMPLATES = [
