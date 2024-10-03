@@ -135,6 +135,10 @@ def obtener_valor_reserva(id_reserva):
 
     return valor_reserva
 
-
+def generar_factura(request, id_reserva, habitacion_id):
+    if request.user.is_authenticated:
+            pass
+    else:
+        return redirect("/formularios/login/")
    
    
