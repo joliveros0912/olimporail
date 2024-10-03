@@ -1,1 +1,1 @@
-web : gunicorn ApisOlimpo.wsgi
+web : gunicorn ApisOlimpo.wsgi --log-file -
