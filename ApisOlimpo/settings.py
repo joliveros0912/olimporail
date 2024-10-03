@@ -120,6 +120,13 @@ DATABASES = {
     }
 }
 
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://olimporail-production.up.railway.app',
+    # You can add more origins if needed
+]
+
+
 # url restriccion 
 from django.urls import reverse_lazy
 
