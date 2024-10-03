@@ -1,4 +1,3 @@
-from tkinter import Canvas
 from django.shortcuts import render ,redirect
 from apia.models import *
 import mysql.connector
@@ -136,66 +135,6 @@ def obtener_valor_reserva(id_reserva):
 
     return valor_reserva
 
-def generar_factura(request, id_reserva, habitacion_id):
-    if request.user.is_authenticated:
-        
-        empleado = empleados.objects.get(cc_usu=request.user)
-        
-        # Verificar el tipo de usuario
-        if empleado.codigo_usu_id == 'resepcionista':
-            try:
-                    
-                total_adicionales = obtener_valor_adicionales(id_reserva)
-                valor_reserva = obtener_valor_reserva(id_reserva)
-                estado = "inactivo"
 
-                # Cambiar el estado de la reserva a "inactivo"
-                reserva_obj = reserva.objects.get(id_reserva=id_reserva)
-                reserva_obj.estado_res_id = estado
-                reserva_obj.save()
-
-                # Cambiar el estado de la habitación a "Disponible"
-                habitacion_obj = habitacion.objects.get(numero_H=habitacion_id)
-                habitacion_obj.estado_id = "Disponible"
-                habitacion_obj.save()
-
-                if total_adicionales is None:
-                    total_adicionales = 0  # Asignar un valor predeterminado si total_adicionales es None
-
-                if valor_reserva is None:
-                    return HttpResponse("No se encontraron datos para la reserva.")
-
-                total_factura = total_adicionales + valor_reserva
-
-                # Crear un objeto BytesIO para almacenar el PDF
-                buffer = BytesIO()
-
-                # Crear el documento PDF
-                c = canvas.Canvas(buffer, pagesize=letter)
-                c.drawString(100, 750, "Factura")
-                c.drawString(100, 730, f"ID de Reserva: {id_reserva}")
-                c.drawString(100, 710, f"Total de Adicionales: ${total_adicionales}")
-                c.drawString(100, 690, f"Valor de Reserva: ${valor_reserva}")
-                c.drawString(100, 670, f"Total de Factura: ${total_factura}")
-                c.save()
-
-                # Establecer la posición del puntero en el inicio del archivo
-                buffer.seek(0)
-
-                # Crear una respuesta HTTP con el contenido del PDF adjunto
-                response = HttpResponse(buffer, content_type='application/pdf')
-                response['Content-Disposition'] = f'attachment; filename=factura_{id_reserva}.pdf'
-
-                # Redirigir a una URL después de enviar la respuesta
-                return response
-            except Exception as e:
-                # Manejar errores
-                return HttpResponse(f"Error al generar la factura: {e}")
-        else:
-            # Si el usuario no tiene el tipo de usuario adecuado, mostrar un mensaje de alerta
-            return render(request, 'error.html', {"message": "usted no tiene permisos para esatr aca ."})    
-
-    else:
-        return redirect("/formularios/login/")
    
    
